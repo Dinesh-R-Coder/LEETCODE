@@ -1,0 +1,28 @@
+class Solution {
+    public int minExtraChar(String s, String[] dictionary) {
+        StringBuilder sb = new StringBuilder(s);
+        Arrays.sort(dictionary ,Comparator.comparingInt(String::length).reversed());
+        for(int i = 0 ; i < dictionary.length ; i++){
+            String str = dictionary[i] ;
+            check(sb , str);
+        }
+        
+        String res = sb.toString().replace(" ","");
+        System.out.println(res+" "+"ff");
+        return res.length() ;
+    }
+    public void check(StringBuilder sb , String str){
+        while(sb.toString().contains(str)){
+                if(sb.toString().contains(str)){   
+                int start = sb.indexOf(str) ;
+                if(start != -1){
+                    int end = start + str.length() ;
+                    //sb.delete(start , end);
+                    sb.replace(start , end , " ");
+                    start = sb.indexOf(str, start + 1);
+                    System.out.println(str+" "+sb.toString()+" "+sb.length());
+                }
+          }
+       }
+    }
+}
