@@ -1,0 +1,23 @@
+class Solution {
+    public int rearrangeCharacters(String s, String target) {
+        Map<Character , Integer> hm = new HashMap<>() ;
+        for(int i = 0 ; i < s.length() ; i++){
+            char c = s.charAt(i) ;
+            if(target.contains(String.valueOf(c))){
+                hm.put(c , hm.getOrDefault(c , 0) + 1);
+            }
+        }
+        Map<Character , Integer > thm = new HashMap<>() ;
+        for(int i = 0 ; i < target.length() ; i++){
+            char c = target.charAt(i) ;
+            thm.put(c , thm.getOrDefault(c , 0) + 1);
+        }
+        int min = 1000 ;
+        for(int i = 0 ; i < target.length() ; i++){
+            int a = hm.getOrDefault(target.charAt(i) , 0);
+            int t = thm.getOrDefault(target.charAt(i) , 0);
+            min = Math.min(min , a / t);
+        }
+        return min ;
+    }
+}
