@@ -1,0 +1,24 @@
+class Solution {
+    public int[][] flipAndInvertImage(int[][] image) {
+        for(int r = 0 ; r < image.length ; r++){
+            for(int c = 0 ; c < image.length/2 ; c++){
+                int t = image[r][c] ;
+                image[r][c] = image[r][image.length - c -1] ;
+                image[r][image.length - c -1] = t ;
+
+            }
+        }
+
+        for(int r = 0 ; r < image.length ; r++){
+            for(int c = 0 ; c < image.length ; c++){
+                if(image[r][c] == 1){
+                    image[r][c] = 0 ;
+                }
+                else{
+                    image[r][c] = 1 ;
+                }
+            }
+        }
+        return image ;
+    }
+}
