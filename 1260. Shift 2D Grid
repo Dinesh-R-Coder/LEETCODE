@@ -1,0 +1,39 @@
+class Solution {
+    public List<List<Integer>> shiftGrid(int[][] grid, int k) {
+        int m = grid.length , n = grid[0].length ;
+        int[] res = new int[m * n] ;
+        int index = 0 ;
+        for(int r = 0 ; r < m ; r++){
+            for(int c = 0 ; c < n ; c++){
+                res[index] = grid[r][c] ;
+                index++ ;
+            }
+        }
+
+        k = k % res.length ;
+        reverse(res , 0 , res.length - k - 1) ;
+        reverse(res , res.length - k , res.length - 1) ;
+        reverse(res , 0 , res.length - 1) ;
+        
+        List<List<Integer>> li = new ArrayList<>() ;
+        int index1 = 0 ;
+        for(int i = 0 ; i < m ; i++){
+            List<Integer> li1 = new ArrayList<>() ;
+            for(int j = 0 ; j < n ; j++){
+                li1.add(res[index1]) ;
+                index1++ ;
+            }
+             li.add(li1) ;
+        }
+        return li ;
+    }
+    private static void reverse(int[] res , int l , int r){
+        while(l < r){
+            int t = res[l] ;
+            res[l] = res[r] ;
+            res[r] = t ;
+            l++ ;
+            r-- ;
+        }
+    }
+}
