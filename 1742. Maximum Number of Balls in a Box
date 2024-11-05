@@ -1,0 +1,21 @@
+class Solution {
+    public int countBalls(int lowLimit, int highLimit) {
+        HashMap<Integer , Integer > map = new HashMap<>() ;
+        for(int i = lowLimit ; i <= highLimit ; i++){
+            int ball = i ;
+            int sum = 0 ;
+            while(ball > 0){
+                 int r = ball % 10 ;
+                 sum += r ;
+                 ball /= 10 ;
+            }
+            map.put(sum , map.getOrDefault(sum , 0) + 1) ;
+        }
+            int countBalls = 0 ;
+            for(Map.Entry<Integer , Integer > entry : map.entrySet()){
+                countBalls = Math.max(entry.getValue() , countBalls) ;
+                
+            }
+            return countBalls ;
+   }
+}
