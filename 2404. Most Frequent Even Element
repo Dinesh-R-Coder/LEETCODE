@@ -1,0 +1,22 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+       int res = Integer.MAX_VALUE , max = 0 ; 
+       Map<Integer , Integer> map = new HashMap() ;
+       for(int num : nums){
+              if(num % 2 == 0){
+                map.put(num , map.getOrDefault(num , 0) + 1) ;
+              }
+       }
+       for(Map.Entry<Integer , Integer> entry : map.entrySet()){
+          if (entry.getValue() > max || (entry.getValue() == max && entry.getKey() < res)){
+               max = entry.getValue() ;
+               res = entry.getKey() ;
+               System.out.print(max+" "+res) ;
+          }
+       }
+       if(max == 0){
+        return -1 ;
+       }
+       return res ;
+    }
+}
