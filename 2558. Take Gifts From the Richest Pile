@@ -1,0 +1,23 @@
+class Solution {
+    public long pickGifts(int[] gifts, int k) {
+        long sum = 0 ;
+        int count = 0 ;
+        while(count < k){
+            int max = 0 , index = 0 ;
+            for(int i = 0 ; i < gifts.length ; i++){
+                if(gifts[i] > max ){
+                    max = gifts[i] ;
+                    index = i ;
+                }
+            }
+            gifts[index] = (int)Math.floor(Math.sqrt(gifts[index])) ;
+            count++ ;
+
+        }
+        for(int i = 0 ; i < gifts.length ; i++){
+            sum += gifts[i];
+        }
+
+        return sum ;
+    }
+}
