@@ -1,0 +1,29 @@
+class Solution {
+    public String sortSentence(String s) {
+     String[] str = new String[10] ;
+     String s1 = "" ;
+     String res = "" ;
+     String num = "" ;
+     int index = 0 ;
+     for(int i = 0 ; i < s.length() ; i++){
+        if(s.charAt(i) >= '0' && s.charAt(i) <= '9'){
+               num += s.charAt(i) ;
+               index = Integer.parseInt(num) ;
+               str[index] = s1 ;
+               s1 = "" ;
+               num = "" ;
+               i++ ;
+          }
+
+        else{
+            s1 += s.charAt(i) ;
+        }
+     }
+     for(int i = 0 ; i < str.length ; i++){
+        if(str[i] != null){
+           res += str[i]+" " ;
+        }
+     } 
+     return res.trim() ;  
+    }
+}
