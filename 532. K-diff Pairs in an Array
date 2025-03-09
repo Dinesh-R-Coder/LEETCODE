@@ -1,0 +1,15 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        Set<List<Integer>> list1 = new HashSet<>() ;
+        
+        for(int i = 0 ; i < nums.length  ; i++){
+            for(int j = i + 1 ; j < nums.length ; j++){
+                  if(Math.abs(nums[i] - nums[j]) == k ){
+                   List<Integer> list2 = Arrays.asList(Math.min(nums[i] , nums[j]) , Math.max(nums[i] , nums[j])) ;
+                           list1.add(list2) ;
+                  }
+            }
+        } 
+        return list1.size() ;
+    }
+}
